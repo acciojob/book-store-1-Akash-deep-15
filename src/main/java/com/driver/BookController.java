@@ -95,8 +95,8 @@ public class BookController {
                 if (bookList.contains(B))
                     bookList.remove(B);
             }
-            return new ResponseEntity(HttpStatus.ACCEPTED);
         }
+            return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 
     // get request /get-books-by-author
