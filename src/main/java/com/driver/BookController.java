@@ -48,7 +48,7 @@ public class BookController {
     // getBookById()
 
     @GetMapping("/get-book-by-id/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable int id) {
+    public ResponseEntity<Book> getBookById(@PathVariable("id") int id) {
 
         Book ans = null;
         for(Book B: bookList) {
