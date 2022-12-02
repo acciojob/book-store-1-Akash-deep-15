@@ -51,9 +51,11 @@ public class BookController {
     public ResponseEntity<Book> getBookById(@PathVariable("id") String id) {
 
         Book ans = null;
-        for(Book B: bookList) {
-            if(B.getId() == Integer.valueOf(id)) {
-                ans = B;
+        if(!bookList.isEmpty()) {
+            for (Book B : bookList) {
+                if (B.getId() == Integer.valueOf(id)) {
+                    ans = B;
+                }
             }
         }
         return new ResponseEntity(ans,HttpStatus.OK);
@@ -65,9 +67,11 @@ public class BookController {
 
     @DeleteMapping("/delete-book-by-id/{id}")
     public ResponseEntity deleteBookById(@PathVariable("id") String id) {
-        for(Book B: bookList) {
-            if(B.getId() == Integer.valueOf(id)) {
-                bookList.remove(B);
+        if(!bookList.isEmpty()) {
+            for (Book B : bookList) {
+                if (B.getId() == Integer.valueOf(id)) {
+                    bookList.remove(B);
+                }
             }
         }
         return new ResponseEntity(HttpStatus.ACCEPTED);
@@ -85,11 +89,14 @@ public class BookController {
     // deleteAllBooks()
     @DeleteMapping("/delete-all-books")
     public ResponseEntity deleteAllBooks() {
-        for(Book B: bookList) {
-            if(bookList.contains(B))
-            bookList.remove(B);
+
+        if (bookList.isEmpty()) {
+            for (Book B : bookList) {
+                if (bookList.contains(B))
+                    bookList.remove(B);
+            }
+            return new ResponseEntity(HttpStatus.ACCEPTED);
         }
-        return new ResponseEntity(HttpStatus.ACCEPTED);
     }
 
     // get request /get-books-by-author
