@@ -48,11 +48,11 @@ public class BookController {
     // getBookById()
 
     @GetMapping("/get-book-by-id/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable("id") int id) {
+    public ResponseEntity<Book> getBookById(@PathVariable("id") String id) {
 
         Book ans = null;
         for(Book B: bookList) {
-            if(B.getId() == id) {
+            if(B.getId() == Integer.valueOf(id)) {
                 ans = B;
             }
         }
@@ -64,9 +64,9 @@ public class BookController {
     // deleteBookById()
 
     @DeleteMapping("/delete-book-by-id/{id}")
-    public ResponseEntity deleteBookById(@PathVariable("id") int id) {
+    public ResponseEntity deleteBookById(@PathVariable("id") String id) {
         for(Book B: bookList) {
-            if(B.getId() == id) {
+            if(B.getId() == Integer.valueOf(id)) {
                 bookList.remove(B);
             }
         }
