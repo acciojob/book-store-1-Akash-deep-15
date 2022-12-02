@@ -31,8 +31,6 @@ public class BookController {
     }
 
     public BookController(){
-        this.bookList = new ArrayList<Book>();
-        this.id = 1;
     }
 
     // post request /create-book
