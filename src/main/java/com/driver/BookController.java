@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class BookController {
 
     private List<Book> bookList;
-    private int id = 1;
+    private int id;
 
     public List<Book> getBookList() {
         return bookList;
@@ -31,6 +31,9 @@ public class BookController {
     }
 
     public BookController(){
+
+        this.bookList = new ArrayList<>();
+        this.id = 1;
     }
 
     // post request /create-book
