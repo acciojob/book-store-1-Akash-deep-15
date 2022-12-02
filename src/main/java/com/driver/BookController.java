@@ -48,7 +48,7 @@ public class BookController {
     // getBookById()
 
     @GetMapping("/get-book-by-id/{id}")
-    public ResponseEntity<Book> getBook(@PathVariable int id) {
+    public ResponseEntity<Book> getBookById(@PathVariable int id) {
 
         Book ans = null;
         for(Book B: bookList) {
@@ -64,7 +64,7 @@ public class BookController {
     // deleteBookById()
 
     @DeleteMapping("/delete-book-by-id/{id}")
-    public ResponseEntity deleteId(@PathVariable("id") int id) {
+    public ResponseEntity deleteBookById(@PathVariable("id") int id) {
         for(Book B: bookList) {
             if(B.getId() == id) {
                 bookList.remove(B);
@@ -77,14 +77,14 @@ public class BookController {
     // getAllBooks()
 
     @GetMapping("/get-all-books")
-    public ResponseEntity<List<Book>> getAll() {
+    public ResponseEntity<List<Book>> getAllBooks() {
         return new ResponseEntity(bookList, HttpStatus.ACCEPTED);
     }
 
     // delete request /delete-all-books
     // deleteAllBooks()
     @DeleteMapping("/delete-all-books")
-    public ResponseEntity deleteAll() {
+    public ResponseEntity deleteAllBooks() {
         for(Book B: bookList) {
             if(bookList.contains(B))
             bookList.remove(B);
@@ -96,7 +96,7 @@ public class BookController {
     // pass author name as request param
     // getBooksByAuthor()
     @GetMapping("/get-books-by-author")
-    public ResponseEntity<List<Book>> byAuthor(@RequestParam("author") String name) {
+    public ResponseEntity<List<Book>> getBooksByAuthor(@RequestParam("author") String name) {
         List<Book> ans= new ArrayList<>();
 
         for(Book B: bookList) {
@@ -112,7 +112,7 @@ public class BookController {
     // pass genre name as request param
     // getBooksByGenre()
     @GetMapping("/get-books-by-genre")
-    public ResponseEntity<List<Book>> bygenre(@RequestParam("genre") String name) {
+    public ResponseEntity<List<Book>> getBooksByGenre(@RequestParam("genre") String name) {
         List<Book> ans= new ArrayList<>();
 
         for(Book B: bookList) {
